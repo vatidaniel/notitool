@@ -38,6 +38,7 @@ public class NotificationConfiguration {
 
     @Bean
     FcmMessageManager fcmMessageManager(FirebaseMessaging messaging) {
+        // Or new FcmMessageManager(messaging, customFactory) to inject a custom FcmMessageFactory.
         return new FcmMessageManager(messaging);
     }
 
@@ -48,3 +49,10 @@ public class NotificationConfiguration {
 
 }
 ```
+
+Notes:
+- The managers auto-batch large requests to FCM limits (500 tokens/multicast, 1000/subscribe), so you
+  can pass arbitrarily large device lists to `sendMulticast` / `subscribe` / `unsubscribe`.
+- For non-blocking sends use the `*Async` methods, which return `CompletableFuture`.
+- `notitool` depends on `slf4j-api` only; provide an SLF4J binding (e.g. `logback-classic`, or Spring
+  Boot's default) so the managers' log output is rendered.

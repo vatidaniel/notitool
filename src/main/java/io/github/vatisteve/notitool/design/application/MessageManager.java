@@ -7,6 +7,7 @@ import io.github.vatisteve.notitool.design.domain.ITopic;
 import io.github.vatisteve.notitool.design.exceptions.NotificationException;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * MessageManager
@@ -55,5 +56,30 @@ public interface MessageManager<N extends INotification, D extends IDevice<?, ?>
      * @throws NotificationException if any error occurred when pushing
      */
     MessageManagementResponse sendToDeviceGroup(N notification, IDeviceGroup<D> group) throws NotificationException;
+
+    /**
+     * Asynchronous, non-blocking variant of {@link #send(INotification, IDevice)}. Any push-service
+     * error completes the returned future exceptionally instead of throwing.
+     * @param notification the {@link INotification}
+     * @param device the {@link IDevice}
+     * @return a future completing with the {@link MessageManagementResponse}
+     */
+    CompletableFuture<MessageManagementResponse> sendAsync(N notification, D device);
+
+    /**
+     * Asynchronous, non-blocking variant of {@link #sendMulticast(INotification, List)}.
+     * @param notification the {@link INotification}
+     * @param devices a list of {@link IDevice}
+     * @return a future completing with the aggregated {@link MessageManagementResponse}
+     */
+    CompletableFuture<MessageManagementResponse> sendMulticastAsync(N notification, List<D> devices);
+
+    /**
+     * Asynchronous, non-blocking variant of {@link #sendToTopic(INotification, ITopic)}.
+     * @param notification the {@link INotification}
+     * @param topic the {@link ITopic}
+     * @return a future completing with the {@link MessageManagementResponse}
+     */
+    CompletableFuture<MessageManagementResponse> sendToTopicAsync(N notification, T topic);
 
 }

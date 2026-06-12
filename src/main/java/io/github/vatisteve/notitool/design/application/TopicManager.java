@@ -5,6 +5,7 @@ import io.github.vatisteve.notitool.design.domain.ITopic;
 import io.github.vatisteve.notitool.design.exceptions.NotificationException;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  *  TopicManager
@@ -52,5 +53,21 @@ public interface TopicManager<T extends ITopic<?>, D extends IDevice<?, ?>> {
      * @throws NotificationException if have any error occurred when subscribe device to topic
      */
     TopicManagementResponse unsubscribe(T topic, List<D> devices) throws NotificationException;
+
+    /**
+     * Asynchronous, non-blocking variant of {@link #subscribe(ITopic, List)}.
+     * @param topic the {@link ITopic}
+     * @param devices the {@link IDevice}
+     * @return a future completing with the aggregated {@link TopicManagementResponse}
+     */
+    CompletableFuture<TopicManagementResponse> subscribeAsync(T topic, List<D> devices);
+
+    /**
+     * Asynchronous, non-blocking variant of {@link #unsubscribe(ITopic, List)}.
+     * @param topic the {@link ITopic}
+     * @param devices the {@link IDevice}
+     * @return a future completing with the aggregated {@link TopicManagementResponse}
+     */
+    CompletableFuture<TopicManagementResponse> unsubscribeAsync(T topic, List<D> devices);
 
 }

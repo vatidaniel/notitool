@@ -17,6 +17,7 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
     public Message androidMessageForDeviceToken(FcmNotification.AndroidNotificationData and, String token) {
         return Message.builder()
                 .setAndroidConfig(getAndroidConfig(and))
+                .putAllData(and.data())
                 .setToken(token)
                 .build();
     }
@@ -24,13 +25,14 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
     public Message androidMessageForTopic(FcmNotification.AndroidNotificationData and, String topic) {
         return Message.builder()
                 .setAndroidConfig(getAndroidConfig(and))
+                .putAllData(and.data())
                 .setTopic(topic)
                 .build();
     }
 
     private AndroidConfig getAndroidConfig(FcmNotification.AndroidNotificationData and) {
         return AndroidConfig.builder()
-                .setTtl(3600000) // 1 hour in milliseconds
+                .setTtl(and.ttlMillis())
                 .setPriority(and.priority())
                 .setNotification(AndroidNotification.builder()
                         .setTitle(and.title())
@@ -44,6 +46,7 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
     public Message apnsMessageForDeviceToken(FcmNotification.ApnsNotificationData ind, String token) {
         return Message.builder()
                 .setApnsConfig(getApnsConfig(ind))
+                .putAllData(ind.data())
                 .setToken(token)
                 .build();
     }
@@ -51,6 +54,7 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
     public Message apnsMessageForTopic(FcmNotification.ApnsNotificationData ind, String topic) {
         return Message.builder()
                 .setApnsConfig(getApnsConfig(ind))
+                .putAllData(ind.data())
                 .setTopic(topic)
                 .build();
     }
@@ -71,6 +75,7 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
     public Message webPushMessageForDeviceToken(FcmNotification.WebNotificationData wnd, String token) {
         return Message.builder()
                 .setWebpushConfig(getWebpushConfig(wnd))
+                .putAllData(wnd.data())
                 .setToken(token)
                 .build();
     }
@@ -78,6 +83,7 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
     public Message webPushMessageForTopic(FcmNotification.WebNotificationData wnd, String topic) {
         return Message.builder()
                 .setWebpushConfig(getWebpushConfig(wnd))
+                .putAllData(wnd.data())
                 .setTopic(topic)
                 .build();
     }
@@ -93,6 +99,8 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
                 .setNotification(getAllPlatformsMessageConfig(nd))
                 .setAndroidConfig(getAndroidConfig(nd.getAndroidNotificationData()))
                 .setApnsConfig(getApnsConfig(nd.getApnsNotificationData()))
+                .setWebpushConfig(getWebpushConfig(nd.getWebNotificationData()))
+                .putAllData(nd.getData())
                 .setToken(token)
                 .build();
     }
@@ -102,6 +110,8 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
                 .setNotification(getAllPlatformsMessageConfig(nd))
                 .setAndroidConfig(getAndroidConfig(nd.getAndroidNotificationData()))
                 .setApnsConfig(getApnsConfig(nd.getApnsNotificationData()))
+                .setWebpushConfig(getWebpushConfig(nd.getWebNotificationData()))
+                .putAllData(nd.getData())
                 .setTopic(topic)
                 .build();
     }
@@ -132,7 +142,8 @@ public class FcmMessageFactory implements MessageFactory<FcmNotification, Messag
                 .setAndroidConfig(getAndroidConfig(notification.getAndroidNotificationData()))
                 .setApnsConfig(getApnsConfig(notification.getApnsNotificationData()))
                 .setWebpushConfig(getWebpushConfig(notification.getWebNotificationData()))
-                .addAllTokens(devices.parallelStream().map(FcmDevice::getDeviceToken).toList())
+                .putAllData(notification.getData())
+                .addAllTokens(devices.stream().map(FcmDevice::getDeviceToken).toList())
                 .build();
     }
 

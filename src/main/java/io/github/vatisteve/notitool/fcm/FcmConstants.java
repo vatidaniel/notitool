@@ -7,7 +7,7 @@ package io.github.vatisteve.notitool.fcm;
  * requests into compliant batches. See the
  * <a href="https://firebase.google.com/docs/cloud-messaging">FCM documentation</a>.
  *
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.2.0
  */
 public final class FcmConstants {

@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
  * Bridges Firebase's Guava-based {@link ApiFuture} to the JDK {@link CompletableFuture} so callers
  * can compose asynchronous sends with standard {@code java.util.concurrent} primitives.
  *
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.2.0
  */
 public final class ApiFutureAdapter {

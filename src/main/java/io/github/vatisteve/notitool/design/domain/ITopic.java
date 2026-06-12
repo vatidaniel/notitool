@@ -3,7 +3,7 @@ package io.github.vatisteve.notitool.design.domain;
 /**
  *  ITopic
  *
- * @author      tinhnv
+ * @author      vatidaniel
  * @since       Jul 22, 2023
  *
  * @param <T>   the topic identifier type

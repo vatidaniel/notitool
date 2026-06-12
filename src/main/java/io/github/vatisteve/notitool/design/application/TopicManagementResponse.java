@@ -5,7 +5,7 @@ package io.github.vatisteve.notitool.design.application;
  *
  * <p>Exposes the outcome of a subscribe / unsubscribe operation.
  *
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.1.0
  */
 public interface TopicManagementResponse {

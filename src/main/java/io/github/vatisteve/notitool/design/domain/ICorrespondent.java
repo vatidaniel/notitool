@@ -3,7 +3,7 @@ package io.github.vatisteve.notitool.design.domain;
 /**
  * ICorrespondent
  *
- * @author      tinhnv
+ * @author      vatidaniel
  * @since       Jul 20, 2023
  *
  * @param <T>   the correspondent identifier type

@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.1.0
  */
 public interface FcmNotification extends INotification {

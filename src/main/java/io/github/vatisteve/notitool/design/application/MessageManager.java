@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * MessageManager
  *
- * @author      tinhnv
+ * @author      vatidaniel
  * @since       Jul 16, 2023
  *
  * @param <N>   the {@link INotification}

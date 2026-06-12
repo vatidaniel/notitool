@@ -3,7 +3,7 @@ package io.github.vatisteve.notitool.fcm;
 import io.github.vatisteve.notitool.design.application.MessageManagementResponse;
 
 /**
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.1.0
  */
 public class FcmMessageResponse implements MessageManagementResponse {

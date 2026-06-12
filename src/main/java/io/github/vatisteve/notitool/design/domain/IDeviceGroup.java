@@ -5,7 +5,7 @@ import java.util.List;
 /**
  *  IDeviceGroup
  *
- * @author      tinhnv
+ * @author      vatidaniel
  * @since       Jul 22, 2023
  *
  * @param <D>   the {@link IDevice}

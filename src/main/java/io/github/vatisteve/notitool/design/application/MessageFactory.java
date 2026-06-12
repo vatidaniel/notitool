@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * MessageFactory
  *
- * @author      tinhnv
+ * @author      vatidaniel
  * @since       Jul 20, 2023
  *
  * @param <N>   the {@link INotification}

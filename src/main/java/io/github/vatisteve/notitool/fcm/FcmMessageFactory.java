@@ -9,7 +9,7 @@ import io.github.vatisteve.notitool.fcm.domain.FcmTopic;
 import java.util.List;
 
 /**
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.1.0
  */
 public class FcmMessageFactory implements MessageFactory<FcmNotification, Message, MulticastMessage, FcmDevice, FcmTopic> {

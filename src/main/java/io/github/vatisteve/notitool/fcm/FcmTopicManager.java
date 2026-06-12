@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.1.0
  */
 public class FcmTopicManager implements TopicManager<FcmTopic, FcmDevice> {

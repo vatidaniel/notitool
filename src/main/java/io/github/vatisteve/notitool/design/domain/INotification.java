@@ -3,7 +3,7 @@ package io.github.vatisteve.notitool.design.domain;
 /**
  *  INotification
  *
- * @author      tinhnv
+ * @author      vatidaniel
  * @since       Jun 25, 2023
  * 
  */

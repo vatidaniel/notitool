@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  *  TopicManager
  *
- * @author      tinhnv
+ * @author      vatidaniel
  * @since       Jul 16, 2023
  *
  * @param <T>   the {@link ITopic}

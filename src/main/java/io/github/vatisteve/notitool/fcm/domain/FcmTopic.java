@@ -4,7 +4,7 @@ import io.github.vatisteve.notitool.design.domain.ITopic;
 
 /**
  * FCM Topic with string identifier type
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.1.0
  */
 public interface FcmTopic extends ITopic<String> {

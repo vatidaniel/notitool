@@ -3,7 +3,7 @@ package io.github.vatisteve.notitool.fcm;
 import io.github.vatisteve.notitool.design.application.MessageManagementResponse;
 
 /**
- * @author vatisteve
+ * @author vatidaniel
  * @since 0.1.0
  */
 public class FcmMessageResponse implements MessageManagementResponse {
@@ -35,6 +35,18 @@ public class FcmMessageResponse implements MessageManagementResponse {
     }
 
     /**
+     * Aggregate the success / failure counts of two batch responses. Used when a multicast send is
+     * split into several FCM-sized chunks and the per-chunk results need to be combined into one.
+     *
+     * @param other the response to add to this one
+     * @return a new batch {@link FcmMessageResponse} holding the summed counts
+     */
+    public FcmMessageResponse merge(FcmMessageResponse other) {
+        return new FcmMessageResponse(this.successCount + other.successCount,
+                this.failureCount + other.failureCount);
+    }
+
+    /**
      * @return is batch message or not
      */
     public boolean isBatch() {
@@ -42,7 +54,7 @@ public class FcmMessageResponse implements MessageManagementResponse {
     }
 
     /**
-     * @return the messageId
+     * @return the messageId, or {@code null} for batch / no-op responses
      */
     public String getMessageId() {
         return messageId;
@@ -51,6 +63,7 @@ public class FcmMessageResponse implements MessageManagementResponse {
     /**
      * @return the successCount
      */
+    @Override
     public int getSuccessCount() {
         return successCount;
     }
@@ -58,6 +71,7 @@ public class FcmMessageResponse implements MessageManagementResponse {
     /**
      * @return the failureCount
      */
+    @Override
     public int getFailureCount() {
         return failureCount;
     }

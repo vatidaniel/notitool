@@ -3,7 +3,7 @@ package io.github.vatisteve.notitool.design.domain;
 /**
  *  IDevice
  *
- * @author      tinhnv
+ * @author      vatidaniel
  * @since       Jun 25, 2023
  *
  * @param <K>   the device token type 
